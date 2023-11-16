@@ -54,6 +54,13 @@ public class ShockWaveShaderGraphController : MonoBehaviour
     
     [SerializeField] private TMP_Text _shockwaveStrengthSliderValueText;
     
+    [SerializeField] private TMP_Text _shockwaveSpeedSliderValueText;
+    
+    [SerializeField] private TMP_Text _shockwaveAspectRatioSliderValueText;
+    
+    [SerializeField] private TMP_Text _shockwaveXOriginSliderValueText;
+    [SerializeField] private TMP_Text _shockwaveYOriginSliderValueText;
+    
     
 
     // ---------- Private stuff ----------
@@ -70,9 +77,25 @@ public class ShockWaveShaderGraphController : MonoBehaviour
         _shockwaveMaterial = _shockwaveGO.GetComponent<MeshRenderer>().material;
         if (!_shockwaveMaterial) { Debug.LogError("Could not find shockwave material / MeshRenderer!"); }
         
-        //_shockwaveMaterial.SetFloat("_RippleSize_TS", -0.2f);
         
-        //_shockwaveMaterial.SetFloat("_RippleSpeedFactor", 3f);
+        
+        // Set all serialized default values on the material (we call the value-changed handlers to so it also updates
+        // the UI).        
+        OnShockwaveXOriginChanged(_focalPointTS.x);
+        OnShockwaveYOriginChanged(_focalPointTS.y);
+        OnShockwaveSizeValueChanged(_rippleSize);
+        OnShockwaveStrengthValueChanged(_magnificationStrength);
+        OnShockwaveSpeedValueChanged(_rippleSpeedFactor);
+        OnShockwaveAspectRatioValueChanged(_aspectRatio);
+        
+        
+        /*
+        var focalPointV4 = new Vector4(_focalPointTS.x, _focalPointTS.y);
+        _shockwaveMaterial.SetVector("_FocalPoint_TS", focalPointV4);
+        _shockwaveMaterial.SetFloat("_MagnificationStrength_TS", _magnificationStrength);
+        _shockwaveMaterial.SetFloat("_RippleSpeedFactor", _rippleSpeedFactor);
+        _shockwaveMaterial.SetFloat("_AspectRatio", _aspectRatio);
+        */
     }
 
     /// <summary>
@@ -94,4 +117,52 @@ public class ShockWaveShaderGraphController : MonoBehaviour
         _shockwaveMaterial.SetFloat("_MagnificationStrength_TS", value);
         _shockwaveStrengthSliderValueText.text = value.ToString("N2");
     }
+    
+    /// <summary>
+    /// Method to update the speed of the shockwave when the relevant slider changes.
+    /// </summary>
+    /// <param name="value">The new size of the shockwave (-1f to +1f)</param>
+    public void OnShockwaveSpeedValueChanged(float value)
+    {
+        _shockwaveMaterial.SetFloat("_RippleSpeedFactor", value);
+        _shockwaveSpeedSliderValueText.text = value.ToString("N2");
+    }
+    
+    /// <summary>
+    /// Method to update the aspect ratio of the shockwave when the relevant slider changes.
+    /// </summary>
+    /// <param name="value">The new size of the shockwave (-1f to +1f)</param>
+    public void OnShockwaveAspectRatioValueChanged(float value)
+    {
+        _shockwaveMaterial.SetFloat("_AspectRatio", value);
+        _shockwaveAspectRatioSliderValueText.text = value.ToString("N2");
+    }
+    
+    
+    
+    
+    
+    /// <summary>
+    /// Method to update the aspect ratio of the shockwave when the relevant slider changes.
+    /// </summary>
+    /// <param name="value">The new size of the shockwave (-1f to +1f)</param>
+    public void OnShockwaveXOriginChanged(float value)
+    {
+        var origin = _shockwaveMaterial.GetVector("_FocalPoint_TS");
+        origin.x = value;
+        _shockwaveMaterial.SetVector("_FocalPoint_TS", origin);
+        _shockwaveXOriginSliderValueText.text = value.ToString("N2");
+    } 
+    
+    /// <summary>
+    /// Method to update the aspect ratio of the shockwave when the relevant slider changes.
+    /// </summary>
+    /// <param name="value">The new size of the shockwave (-1f to +1f)</param>
+    public void OnShockwaveYOriginChanged(float value)
+    {
+        var origin = _shockwaveMaterial.GetVector("_FocalPoint_TS");
+        origin.y = value;
+        _shockwaveMaterial.SetVector("_FocalPoint_TS", origin);
+        _shockwaveYOriginSliderValueText.text = value.ToString("N2");
+    } 
 }
