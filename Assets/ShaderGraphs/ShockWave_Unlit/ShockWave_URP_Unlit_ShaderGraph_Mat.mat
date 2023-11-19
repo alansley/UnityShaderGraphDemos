@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShockWave_URP_Unlit_ShaderGraph_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 1c4426b5f2326db9a9575863093b75bb,
+  m_Shader: {fileID: -6465566751694194690, guid: 1a4e8c332fa8025858110ddb2b372dd2,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -100,6 +100,7 @@ Material:
     - _AspectRatio: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _Brightness: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -129,6 +130,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _TextureOffset: 0.03
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -136,5 +138,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FocalPoint_TS: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Mat3_Row0: {r: 1, g: 2, b: 1, a: 0}
+    - _Mat3_Row1: {r: 2, g: 4, b: 2, a: 0}
+    - _Mat3_Row2: {r: 1, g: 2, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

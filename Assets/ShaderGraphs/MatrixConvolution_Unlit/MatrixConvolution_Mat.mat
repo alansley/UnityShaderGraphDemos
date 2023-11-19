@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestShaderGraph_Mat
+  m_Name: MatrixConvolution_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 1a4e8c332fa8025858110ddb2b372dd2,
     type: 3}
   m_Parent: {fileID: 0}
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fc1f037cc55aea085a2103ef9e892c47, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3709575703d2e0d583917974832fb11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
