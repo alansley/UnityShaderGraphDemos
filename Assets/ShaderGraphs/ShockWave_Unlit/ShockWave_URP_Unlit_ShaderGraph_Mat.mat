@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShockWave_URP_Unlit_ShaderGraph_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 1a4e8c332fa8025858110ddb2b372dd2,
+  m_Shader: {fileID: -6465566751694194690, guid: 1c4426b5f2326db9a9575863093b75bb,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

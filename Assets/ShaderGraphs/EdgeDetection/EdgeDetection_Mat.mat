@@ -7,13 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MatrixConvolution_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 6cc956dfef06ce83488b23ebc59716c8,
+  m_Name: EdgeDetection_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: fac71a244b9246bcf972908c0858c24b,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _CUSTOMSHADEREFFECT_SEPIA
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -89,8 +88,6 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _Brightness: 1
     - _BumpScale: 1
-    - _CUSTOMSHADEREFFECT: 0
-    - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -105,10 +102,8 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OriginalTextureBlendFactor: 0.1
+    - _OriginalTextureBlendFactor: 0.05
     - _Parallax: 0.005
-    - _PerformDilate: 0
-    - _PerformErode: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -120,9 +115,7 @@ Material:
     - _Surface: 0
     - _TextureOffset: 0.003
     - _WorkflowMode: 1
-    - _ZTest: 4
     - _ZWrite: 1
-    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,16 +124,15 @@ Material:
     - _HorizMat3_Row1: {r: 0, g: 0, b: 0, a: 0}
     - _HorizMat3_Row2: {r: 1, g: 2, b: 1, a: 0}
     - _LuminanceConversionWeights: {r: 0.2125, g: 0.7154, b: 0.0721, a: 0}
-    - _Mat3_Row0: {r: 1, g: 2, b: 1, a: 0}
-    - _Mat3_Row1: {r: 2, g: 4, b: 2, a: 0}
+    - _Mat3_Row0: {r: -1, g: -2, b: -1, a: 0}
+    - _Mat3_Row1: {r: 0, g: 0, b: 0, a: 0}
     - _Mat3_Row2: {r: 1, g: 2, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Vector3: {r: 0, g: 0, b: 0, a: 0}
     - _VertMat3_Row0: {r: -1, g: 0, b: 1, a: 0}
     - _VertMat3_Row1: {r: -2, g: 0, b: 2, a: 0}
     - _VertMat3_Row2: {r: -1, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3654959646642454478
+--- !u!114 &4295381268186341692
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
