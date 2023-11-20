@@ -9,6 +9,8 @@ public class CustomMatrixFunctionsShaderGraphController : MonoBehaviour
 {
     [SerializeField] private GameObject _go;
 
+    
+    
     [SerializeField] private bool _autoAnimateByTime = false;
 
     [SerializeField] private float _speedFactor = 0.1f;
@@ -16,6 +18,8 @@ public class CustomMatrixFunctionsShaderGraphController : MonoBehaviour
     [SerializeField] private Slider _textureOffsetSlider;
     [SerializeField] private TMP_Text _textureOffsetSliderHandleText;
 
+    //[SerializeField] private TMP_Dropdown _effectDropdown;
+    
     [SerializeField] private Slider _brightnessSlider;
     [SerializeField] private TMP_Text _brightnessSliderHandleText;
     
@@ -52,6 +56,11 @@ public class CustomMatrixFunctionsShaderGraphController : MonoBehaviour
         _testMaterial.SetFloat("_TextureOffset", _textureOffsetSlider.value);
         _textureOffsetSliderHandleText.text = _textureOffsetSlider.value.ToString("N4");
         
+        // Set us to standard display by default
+        _testMaterial.SetInt("_PerformDilate", 0);
+        _testMaterial.SetInt("_PerformErode", 0);
+        _testMaterial.SetInt("_PerformEmboss", 0);
+        
         // Set our initial matrix values
         _testMaterial.SetVector("_Mat3_Row0", m0);
         _testMaterial.SetVector("_Mat3_Row1", m1);
@@ -82,32 +91,36 @@ public class CustomMatrixFunctionsShaderGraphController : MonoBehaviour
         
         switch (dropdownIndex)
         {
-            // Box / Median Blur
+            // Standard
             case 0:
-                m0.x = 1f; m0.y = 1f; m0.z = 1f;
-                m1.x = 1f; m1.y = 1f; m1.z = 1f;
-                m2.x = 1f; m2.y = 1f; m2.z = 1f;
+                _testMaterial.SetInt("_PerformDilate", 0);
+                _testMaterial.SetInt("_PerformErode", 0);
+                _testMaterial.SetInt("_PerformEmboss", 0);
                 break;
-            // Gaussian Blur
+            
+            // Dilate
             case 1:
-                m0.x = 1f; m0.y = 2f; m0.z = 1f;
-                m1.x = 2f; m1.y = 4f; m1.z = 2f;
-                m2.x = 1f; m2.y = 2f; m2.z = 1f;
+                _testMaterial.SetInt("_PerformDilate", 1);
+                _testMaterial.SetInt("_PerformErode", 0);
+                _testMaterial.SetInt("_PerformEmboss", 0);
                 break;
-            // Sharpen
+            
+            // Erode
             case 2:
-                m0.x = -1f; m0.y = -1f; m0.z = -1f;
-                m1.x = -1f; m1.y =  9f; m1.z = -1f;
-                m2.x = -1f; m2.y = -1f; m2.z = -1f;
+                _testMaterial.SetInt("_PerformDilate", 0);
+                _testMaterial.SetInt("_PerformErode", 1);
+                _testMaterial.SetInt("_PerformEmboss", 0);
                 break;
-            // Laplacian Edge Detection
+            
+            // Emboss
             case 3:
-                m0.x = -1f; m0.y = -1f; m0.z = -1f;
-                m1.x = -1f; m1.y =  8f; m1.z = -1f;
-                m2.x = -1f; m2.y = -1f; m2.z = -1f;
+                _testMaterial.SetInt("_PerformDilate", 0);
+                _testMaterial.SetInt("_PerformErode", 0);
+                _testMaterial.SetInt("_PerformEmboss", 1);
                 break;
         }
         
+        /*
         // Update the material with the new matrix values
         _testMaterial.SetVector("_Mat3_Row0", m0);
         _testMaterial.SetVector("_Mat3_Row1", m1);
@@ -115,6 +128,7 @@ public class CustomMatrixFunctionsShaderGraphController : MonoBehaviour
 
         // Update the InputFields w/ the new values, too
         UpdateMatrixTextInputFieldValues();
+        */
     }
     
     // ----- Row 0 -----
