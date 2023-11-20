@@ -346,9 +346,7 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
 
     private void UpdateMatrixTextInputFieldValues()
     {
-        Debug.Log("Attempting update of IF!");
-        
-        // Horizontal 3x3 Pass
+        // ----- Horizontal 3x3 Pass -----
         // Row 0
         _horizM00InputField.text = _horizM0.x.ToString(CultureInfo.InvariantCulture);
         _horizM10InputField.text = _horizM0.y.ToString(CultureInfo.InvariantCulture);
@@ -364,7 +362,7 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
         _horizM12InputField.text = _horizM2.y.ToString(CultureInfo.InvariantCulture);
         _horizM22InputField.text = _horizM2.z.ToString(CultureInfo.InvariantCulture);
         
-        // Vertical 3x3 Pass
+        // ----- Vertical 3x3 Pass -----
         // Row 0
         _vertM00InputField.text = _vertM0.x.ToString(CultureInfo.InvariantCulture);
         _vertM10InputField.text = _vertM0.y.ToString(CultureInfo.InvariantCulture);
