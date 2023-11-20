@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using TMPro;
+using UnityEngine.Serialization;
 
 public class EdgeDetectionShaderGraphController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
     [SerializeField] private Slider _textureOffsetSlider;
     [SerializeField] private TMP_Text _textureOffsetSliderHandleText;
 
-    [SerializeField] private Dropdown _matrixPresetDropdown;
+    [SerializeField] private TMP_Dropdown _matrixPresetDropdown;
     
     [SerializeField] private Slider _originalBlendFactorSlider;
     [SerializeField] private TMP_Text _originalBlendFactorSliderHandleText;
@@ -23,15 +24,15 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
     [SerializeField] private TMP_Text _brightnessSliderHandleText;
     
     // Horizontal pass 3x3 matrix input fields
-    [SerializeField] private TMP_InputField _horizM00InputField;
-    [SerializeField] private TMP_InputField _horizM10InputField;
-    [SerializeField] private TMP_InputField _horizM20InputField;
-    [SerializeField] private TMP_InputField _horizM01InputField;
-    [SerializeField] private TMP_InputField _horizM11InputField;
-    [SerializeField] private TMP_InputField _horizM21InputField;
-    [SerializeField] private TMP_InputField _horizM02InputField;
-    [SerializeField] private TMP_InputField _horizM12InputField;
-    [SerializeField] private TMP_InputField _horizM22InputField;
+    [SerializeField] private TMP_InputField _m00InputField;
+    [SerializeField] private TMP_InputField _m10InputField;
+    [SerializeField] private TMP_InputField _m20InputField;
+    [SerializeField] private TMP_InputField _m01InputField;
+    [SerializeField] private TMP_InputField _m11InputField;
+    [SerializeField] private TMP_InputField _m21InputField;
+    [SerializeField] private TMP_InputField _m02InputField;
+    [SerializeField] private TMP_InputField _m12InputField;
+    [SerializeField] private TMP_InputField _m22InputField;
     
     // Vertical pass 3x3 matrix input fields
     [SerializeField] private TMP_InputField _vertM00InputField;
@@ -71,7 +72,7 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
         
         // Set texture offset slider details on the material and slider UI
         _testMaterial.SetFloat("_TextureOffset", _textureOffsetSlider.value);
-        _textureOffsetSliderHandleText.text = _textureOffsetSlider.value.ToString("N4");
+        _textureOffsetSliderHandleText.text = _textureOffsetSlider.value.ToString("N3");
         
         // Set blend factor slider details on the material and slider UI
         _testMaterial.SetFloat("_OriginalTextureBlendFactor", _originalBlendFactorSlider.value);
@@ -93,7 +94,7 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
     public void OnTextureOffsetValueChanged(float value)
     {
         _testMaterial.SetFloat("_TextureOffset", value);
-        _textureOffsetSliderHandleText.text = value.ToString("N4");
+        _textureOffsetSliderHandleText.text = value.ToString("N3");
     }
 
     public void OnOriginalBlendFactorValueChanged(float value)
@@ -346,21 +347,20 @@ public class EdgeDetectionShaderGraphController : MonoBehaviour
 
     private void UpdateMatrixTextInputFieldValues()
     {
-        // ----- Horizontal 3x3 Pass -----
         // Row 0
-        _horizM00InputField.text = _horizM0.x.ToString(CultureInfo.InvariantCulture);
-        _horizM10InputField.text = _horizM0.y.ToString(CultureInfo.InvariantCulture);
-        _horizM20InputField.text = _horizM0.z.ToString(CultureInfo.InvariantCulture);
+        _m00InputField.text = _horizM0.x.ToString(CultureInfo.InvariantCulture);
+        _m10InputField.text = _horizM0.y.ToString(CultureInfo.InvariantCulture);
+        _m20InputField.text = _horizM0.z.ToString(CultureInfo.InvariantCulture);
         
         // Row 1
-        _horizM01InputField.text = _horizM1.x.ToString(CultureInfo.InvariantCulture);
-        _horizM11InputField.text = _horizM1.y.ToString(CultureInfo.InvariantCulture);
-        _horizM21InputField.text = _horizM1.z.ToString(CultureInfo.InvariantCulture);
+        _m01InputField.text = _horizM1.x.ToString(CultureInfo.InvariantCulture);
+        _m11InputField.text = _horizM1.y.ToString(CultureInfo.InvariantCulture);
+        _m21InputField.text = _horizM1.z.ToString(CultureInfo.InvariantCulture);
         
         // Row 2
-        _horizM02InputField.text = _horizM2.x.ToString(CultureInfo.InvariantCulture);
-        _horizM12InputField.text = _horizM2.y.ToString(CultureInfo.InvariantCulture);
-        _horizM22InputField.text = _horizM2.z.ToString(CultureInfo.InvariantCulture);
+        _m02InputField.text = _horizM2.x.ToString(CultureInfo.InvariantCulture);
+        _m12InputField.text = _horizM2.y.ToString(CultureInfo.InvariantCulture);
+        _m22InputField.text = _horizM2.z.ToString(CultureInfo.InvariantCulture);
         
         // ----- Vertical 3x3 Pass -----
         // Row 0
