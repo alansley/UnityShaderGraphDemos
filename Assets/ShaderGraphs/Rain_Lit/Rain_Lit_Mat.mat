@@ -50,12 +50,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BaseTextureTilingFactor: 2.42
     - _MaskVariant: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RippleAnimationFPS: 16
     - _RippleSpeed: 1
-    - _RippleStrength: -0.49
-    - _RippleTilingFactor: 3
+    - _RippleStrength: 0.05
+    - _RippleTilingFactor: 1
     - _Smoothness: 0.6
     - _Tiling: 0.6
     m_Colors:
