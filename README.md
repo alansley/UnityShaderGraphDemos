@@ -10,27 +10,27 @@ URP & Shader Graph version: 14.0.9
 All effects built from scratch using the provided 'based on' source material - massive thanks to the authors of these wonderful resources! `<3` 
 
 ### Shockwave
-Shockwave / ripple effect with push/pull parameters
-Based on: GameDevBill - "Shockwave Shader Graph - How to make a show wave shader in Unity URP/HDRP" - https://www.youtube.com/watch?v=dFDAwT5iozo	
+- Shockwave / ripple effect with push/pull parameters
+- Based on: GameDevBill - "Shockwave Shader Graph - How to make a show wave shader in Unity URP/HDRP" - https://www.youtube.com/watch?v=dFDAwT5iozo	
 	
 ### Dissolve
-Noise threshold dissolve with coloured edges. TODO: Make this directional!
-Based on: Brackeys - "Dissolve using Unity Shader Graph" - https://www.youtube.com/watch?v=taMp1g1pBeE
+- Noise threshold dissolve with coloured edges. TODO: Make this directional!
+- Based on: Brackeys - "Dissolve using Unity Shader Graph" - https://www.youtube.com/watch?v=taMp1g1pBeE
 
 ### Hologram
-A model-space transparent hologram effect with animated scanlines and noise.
-Based on: TODO: Look it up - can't remember!
+- A model-space transparent hologram effect with animated scanlines and noise.
+- Based on: TODO: Look it up - can't remember!
 
 ### Force-field / Intersection
-A "glowing-intersection" effect where a model intersects with another. Useful for force-fields / holograms and such.
+-A "glowing-intersection" effect where a model intersects with another. Useful for force-fields / holograms and such.
 Based on a combination of:
-- Gabriel Anguiar Prod. - "Unity Shader Graph - Intersection Effect Tutorial" - https://www.youtube.com/watch?v=Uyw5yBFEoXo
-- Brackeys - "Force Field in Unity" - https://www.youtube.com/watch?v=NiOGWZXBg4Y
-Note: Requires "Depth Texture" and "Opaque Texture" to be enabled in the URP settings (in 'Assets\Settings\URP-HighFidelity.asset' etc.)
+	- Gabriel Anguiar Prod. - "Unity Shader Graph - Intersection Effect Tutorial" - https://www.youtube.com/watch?v=Uyw5yBFEoXo
+	- Brackeys - "Force Field in Unity" - https://www.youtube.com/watch?v=NiOGWZXBg4Y
+	Note: Requires "Depth Texture" and "Opaque Texture" to be enabled in the URP settings (in 'Assets\Settings\URP-HighFidelity.asset' etc.)
 	
 ### Rain
-A sprite-sheet animation of normals based rain effect.
-Based on: PolyToot - "Unity Shadergraph: Rain Drop Ripples!" - https://www.youtube.com/watch?v=R6EX6dN1BOs
+- A sprite-sheet animation of normals based rain effect.
+- Based on: PolyToot - "Unity Shadergraph: Rain Drop Ripples!" - https://www.youtube.com/watch?v=R6EX6dN1BOs
 	
 ## Third-Party Assets
 This project uses the following (FOSS) third-party assets (thank you, devs!):
