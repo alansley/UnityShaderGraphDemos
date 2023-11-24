@@ -51,6 +51,7 @@ Based on a combination of:
 - Based on: 
 	- Some GLSL code I'd previously written, and
 	- pintusaini - "Edge detection using Prewitt, Scharr and Sobel Operator" - https://www.geeksforgeeks.org/edge-detection-using-prewitt-scharr-and-sobel-operator/
+	- Tom Crossland - Canny Edge Detector - https://tomcrossland.com/edgedetection/
 
 #### Rain
 - A sprite-sheet animation of normals based rain effect.
