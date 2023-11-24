@@ -26,7 +26,9 @@ public class BoundsCenterRotator : MonoBehaviour
     /// The center position to rotate the object around - populated from the object's Renderer.bounds.center property.
     /// </summary>
     private Vector3 _centralBoundsPosition;
-    
+
+    private float _rotationSpeedFactor = 1f;
+
     /// <summary>
     /// Unity Start hook.
     /// </summary>
@@ -49,15 +51,21 @@ public class BoundsCenterRotator : MonoBehaviour
 
         if (_coordinateSystem == Space.Self)
         {   
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.right, _degsPerSecond.x * deltaTime);
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.up, _degsPerSecond.y * deltaTime);
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.forward, _degsPerSecond.z * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.right, _degsPerSecond.x * _rotationSpeedFactor * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.up, _degsPerSecond.y * _rotationSpeedFactor * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, thisTransform.forward, _degsPerSecond.z * _rotationSpeedFactor * deltaTime);
         }
         else // Rotate in world-space
         {
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.right, _degsPerSecond.x * deltaTime);
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.up, _degsPerSecond.y * deltaTime);
-            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.forward, _degsPerSecond.z * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.right, _degsPerSecond.x * _rotationSpeedFactor * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.up, _degsPerSecond.y * _rotationSpeedFactor * deltaTime);
+            _gameObjectToRotate.transform.RotateAround(_centralBoundsPosition, Vector3.forward, _degsPerSecond.z * _rotationSpeedFactor * deltaTime);
         }
     }
+
+    /// <summary>
+    /// Method to set a multiplier on the rotation speed for use with a slider or similar.
+    /// </summary>
+    /// <param name="value">The rotation speed multiplication factor.</param>
+    public void SetRotationSpeedFactor(float value) { _rotationSpeedFactor = value; }
 }
