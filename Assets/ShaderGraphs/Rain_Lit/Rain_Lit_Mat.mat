@@ -25,15 +25,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseTexture:
-        m_Texture: {fileID: 2800000, guid: 543c08d04bbfd291e93d3c4ab3588e6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9cb0554023959caf19fe0f4e1556e5c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTexture:
-        m_Texture: {fileID: 2800000, guid: b05308fda36a74f6483bf5924f99ebff, type: 3}
+        m_Texture: {fileID: 2800000, guid: f095d143e0beb0db5855daf2d55ec9ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RippleSheetNormalTexture:
         m_Texture: {fileID: 2800000, guid: af230f2823d71f8419aaec74f1f777e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceWaterNormalTexture:
+        m_Texture: {fileID: 2800000, guid: 507dcba6645e302b0879d86673068408, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -50,17 +54,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BaseTextureTilingFactor: 2.42
+    - _BaseTextureTilingFactor: 1
     - _MaskVariant: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RiplleStrength: 0.1
     - _RippleAnimationFPS: 16
+    - _RippleNoiseSpeed: 1
     - _RippleSpeed: 1
-    - _RippleStrength: 0.05
-    - _RippleTilingFactor: 1
+    - _RippleStrength: 0.25
+    - _RippleTilingFactor: 4
     - _Smoothness: 0.6
+    - _SurfaceWaterSpeed: 0.5
+    - _SurfaceWaterStrength: 0.5
+    - _SurfaceWaterTilingFactor: 6
     - _Tiling: 0.6
     m_Colors:
+    - _SurfaceWaterDirectionPass1: {r: 1, g: 1, b: 0, a: 0}
+    - _SurfaceWaterDirectionPass2: {r: -1, g: 1, b: 0, a: 0}
+    - _SurfaceWaterSpeedPass1: {r: 1, g: 1, b: 0, a: 0}
+    - _SurfaceWaterSpeedPass2: {r: -1, g: 1, b: 0, a: 0}
     - _TintColour: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1439734729590310914

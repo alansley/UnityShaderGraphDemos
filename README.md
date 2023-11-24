@@ -60,3 +60,5 @@ Based on a combination of:
 This project uses the following (FOSS) third-party assets (thank you, devs!):
 
 - `UnityColorPicker` by `mmaletin` - https://github.com/mmaletin/UnityColorPicker
+
+- Cloudy normal texture (used in the rain effect shader graph) by Calimou - https://opengameart.org/node/36296
