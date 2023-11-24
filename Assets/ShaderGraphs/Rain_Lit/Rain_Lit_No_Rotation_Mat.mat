@@ -7,33 +7,33 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TidalPool1_Mat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Name: Rain_Lit_No_Rotation_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 7c43fd650bde5200b83ceeaa88dfcfad,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _OCCLUSIONMAP
-  - _PARALLAXMAP
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseTexture:
         m_Texture: {fileID: 2800000, guid: 9cb0554023959caf19fe0f4e1556e5c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f095d143e0beb0db5855daf2d55ec9ff, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -53,23 +53,35 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9cb0554023959caf19fe0f4e1556e5c0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 462385119a3628a97b52d1b79fc9604e, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexture:
+        m_Texture: {fileID: 2800000, guid: f095d143e0beb0db5855daf2d55ec9ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 05c29f0a4b1f9401b8a14a373cd8f2c8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: abbadd5e4e2264ab5a30169ef9ac0d91, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RippleSheetNormalTexture:
+        m_Texture: {fileID: 2800000, guid: af230f2823d71f8419aaec74f1f777e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceWaterNormalTexture:
+        m_Texture: {fileID: 2800000, guid: 507dcba6645e302b0879d86673068408, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -88,6 +100,8 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _BaseTextureSmoothness: 0.5
+    - _BaseTextureTilingFactor: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -103,17 +117,26 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MaskVariant: 0.5
     - _Metallic: 0
-    - _OcclusionStrength: 0.697
-    - _Parallax: 0.039
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.39
+    - _RippleAnimationFPS: 16
+    - _RippleNoiseSpeed: 1
+    - _RippleStrength: 0.3
+    - _RippleTilingFactor: 6
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _SurfaceWaterSpeed: 0.1
+    - _SurfaceWaterStrength: 0.25
+    - _SurfaceWaterTilingFactor: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -121,8 +144,11 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SurfaceWaterDirectionPass1: {r: 1, g: 1, b: 0, a: 0}
+    - _SurfaceWaterDirectionPass2: {r: -1, g: 1, b: 0, a: 0}
+    - _TintColour: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &3549999828801921799
+--- !u!114 &7800409077827337040
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

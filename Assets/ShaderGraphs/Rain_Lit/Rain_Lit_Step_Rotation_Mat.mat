@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rain_Lit_Mat
+  m_Name: Rain_Lit_Step_Rotation_Mat
   m_Shader: {fileID: -6465566751694194690, guid: d78b290663e066c4e92eb939afa5d6a8,
     type: 3}
   m_Parent: {fileID: 0}
@@ -54,7 +54,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BaseTextureTilingFactor: 1
+    - _BaseTextureSmoothness: 0.5
+    - _BaseTextureTilingFactor: 1.5
+    - _LargeRippleTilingFactor: 2
     - _MaskVariant: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -63,18 +65,20 @@ Material:
     - _RippleNoiseSpeed: 1
     - _RippleSpeed: 1
     - _RippleStrength: 0.25
-    - _RippleTilingFactor: 4
+    - _RippleTextureRotationFactor: 3
+    - _RippleTilingFactor: 16
+    - _SmallRippleTilingFactor: 6
     - _Smoothness: 0.6
-    - _SurfaceWaterSpeed: 0.5
-    - _SurfaceWaterStrength: 0.5
-    - _SurfaceWaterTilingFactor: 6
+    - _SurfaceWaterSpeed: 0.1
+    - _SurfaceWaterStrength: 0.2
+    - _SurfaceWaterTilingFactor: 1
     - _Tiling: 0.6
     m_Colors:
     - _SurfaceWaterDirectionPass1: {r: 1, g: 1, b: 0, a: 0}
     - _SurfaceWaterDirectionPass2: {r: -1, g: 1, b: 0, a: 0}
     - _SurfaceWaterSpeedPass1: {r: 1, g: 1, b: 0, a: 0}
     - _SurfaceWaterSpeedPass2: {r: -1, g: 1, b: 0, a: 0}
-    - _TintColour: {r: 1, g: 1, b: 1, a: 0}
+    - _TintColour: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1439734729590310914
 MonoBehaviour:
