@@ -1,4 +1,18 @@
-void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float2 RegionSize, in float2 RegionCentre, in float MaxIterations, in float ZoomFactor, in bool CalcJuliaInsteadOfMandelbrot, out float3 FractalGreyscaleColour)
+/*
+float2 rotatePoint(float2 p, float2 pivot, float angleDegs)
+{
+	float sinDegs = sin(angleDegs);
+	float cosDegs = cos(angleDegs);
+	
+	p -= pivot;
+	p = float2(p.x * cosDegs - p.y * sinDegs, p.x * sinDegs + p.y * cosDegs);
+	p += pivot;
+	
+	return p;
+}
+*/
+
+void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float2 RegionSize, in float2 RegionCentre, in float MaxIterations, in float ZoomFactor, in float AngleDegs, in bool CalcJuliaInsteadOfMandelbrot, out float3 FractalGreyscaleColour)
 {
 	// Reminder: UVCoords go (0,0) at bottom-left to (1,1) at top-right!
 
@@ -14,18 +28,14 @@ void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float
 	// Get the center of our rendered region
 	float2 Centre = pixelPos * RenderScale + (RegionCentre - (RegionSize / 2));
 
-	
-	float iterations = 0;
-	float zx = 0;
-	float zy = 0;
-	float temp;
+	//pixelPos = rotatePoint(pixelPos, Centre, AngleDegs);	
 
 	// Mandelbrot rendering loop
-	while ((zx * zx + zx * zy < 4.0) && iterations < MaxIterations)
+	float iterations = 0;
+	float2 z = float2(0, 0);
+	while (length(z) < 2.0 && iterations < MaxIterations)
 	{
-		temp = (zx * zx - zy * zy) + Centre.x;
-		zy = (2.0 * zx * zy) + Centre.y;
-		zx = temp;
+		z = float2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + Centre;
 		++iterations;
 	}
 	

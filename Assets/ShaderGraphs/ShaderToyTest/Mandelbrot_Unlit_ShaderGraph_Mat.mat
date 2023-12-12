@@ -121,6 +121,7 @@ Material:
     - _ReceiveShadows: 1
     - _RegionHeight: -2.5
     - _RegionWidth: 3.67
+    - _RotationDegs: 244.42
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -129,14 +130,15 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _ZoomFactor: 3.5
+    - _ZoomFactor: 6.15
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RegionCentre: {r: -0.83006, g: -0.21, b: 0, a: 0}
+    - _RegionCentre: {r: -0.939, g: 0.244, b: 0, a: 0}
     - _RegionSize: {r: 2.5, g: 2.5, b: 0, a: 0}
     - _RenderedRegionSize: {r: 3, g: 3, b: 0, a: 0}
+    - _RotationPivotUV: {r: 0.2, g: 0.6, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TextureResolution: {r: 1024, g: 1024, b: 0, a: 0}
   m_BuildTextureStacks: []
