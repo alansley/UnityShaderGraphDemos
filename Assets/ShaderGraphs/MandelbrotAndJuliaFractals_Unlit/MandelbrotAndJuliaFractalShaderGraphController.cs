@@ -24,10 +24,12 @@ public class MandelbrotAndJuliaFractalShaderGraphController : MonoBehaviour
     [SerializeField] private TMP_Text _rotationDegsSliderLabel;
     [SerializeField] private TMP_Text _rotationHorizPivotSliderLabel;
     [SerializeField] private TMP_Text _rotationVertPivotSliderLabel;
+    [SerializeField] private TMP_InputField _juliaCXInputField;
+    [SerializeField] private TMP_InputField _juliaCYInputField;
     
-    
-    //[SerializeField] private Slider _zoomFactorSlider;
-    
+    /// <summary>
+    /// The material we manipulate.
+    /// </summary>
     private Material _shaderGraphMaterial;
 
     /// <summary>
@@ -43,10 +45,15 @@ public class MandelbrotAndJuliaFractalShaderGraphController : MonoBehaviour
     private int _applyColourGradientID;
     private int _autoZoomID;
     private int _autoRotateID;
+    private int _calculateJuliaSetID;
+    private int _juliaCID;
 
     /// <summary>
-    /// Vectors for properties that we can adjust via separate sliders but are actually the same piece of data - we're
-    /// just modifying the .x or .y parts of it per slider.
+    /// Properties that we can adjust on the material.
+    ///
+    /// Note: The 'Bool as float' comments mean that the shader sees these values as floats internally, even though
+    /// they're defined as Booleans in ShaderGraph.
+    /// Further reading: https://docs.unity3d.com/Packages/com.unity.shadergraph@14.0/manual/Property-Types.html
     /// </summary>
     private Vector2 _textureResolution;
     private float _maxIterations;
@@ -55,14 +62,18 @@ public class MandelbrotAndJuliaFractalShaderGraphController : MonoBehaviour
     private Vector2 _regionCentre;
     private float _rotationDegs;
     private Vector2 _rotationPivotUV;
-    private float _autoZoom;
-    private float _autoRotate;
-    
-    
-    // While `_ApplyColourGradient` is declared in the ShaderGraph as a Boolean - internally to the shader it sees it as a Float!
-    // Further reading: https://docs.unity3d.com/Packages/com.unity.shadergraph@14.0/manual/Property-Types.html
-    private float _applyColourGradient;
-    
+    private float _applyColourGradient; // Bool as float in shader
+    private float _autoZoom;            // Bool as float in shader
+    private float _autoRotate;          // Bool as float in shader
+    private float _calculateJuliaSet;   // Bool as float in shader
+    private Vector2 _juliaC;            // Julia complex number term - see: https://www.karlsims.com/julia.html
+
+    /// <summary>
+    /// Region centres at interesting points where we can zoom far in and still see detail.
+    /// </summary>
+    private static readonly Vector2 DefaultMandelbrotCentre = new Vector2(-0.7449f, 0.1f);
+    private static readonly Vector2 DefaultJuliaCentre      = new Vector2(0.35f, -0.15f);
+
     /// <summary>
     /// Unity Start hook.
     /// </summary>
@@ -76,28 +87,34 @@ public class MandelbrotAndJuliaFractalShaderGraphController : MonoBehaviour
         if (!_shaderGraphMaterial) { Debug.LogWarning("Could not obtain ShaderGraph Material!"); }
 
         // Get the shader property IDs
-        _textureResolutionID = Shader.PropertyToID("_TextureResolution");
-        _regionSizeID        = Shader.PropertyToID("_RegionSize");
-        _regionCentreID      = Shader.PropertyToID("_RegionCentre");
-        _maxIterationsID     = Shader.PropertyToID("_MaxIterations");
-        _zoomFactorID        = Shader.PropertyToID("_ZoomFactor");
-        _rotationDegsID      = Shader.PropertyToID("_RotationDegs");
-        _rotationPivotID     = Shader.PropertyToID("_RotationPivotUV");
+        _textureResolutionID   = Shader.PropertyToID("_TextureResolution");
+        _regionSizeID          = Shader.PropertyToID("_RegionSize");
+        _regionCentreID        = Shader.PropertyToID("_RegionCentre");
+        _maxIterationsID       = Shader.PropertyToID("_MaxIterations");
+        _zoomFactorID          = Shader.PropertyToID("_ZoomFactor");
+        _rotationDegsID        = Shader.PropertyToID("_RotationDegs");
+        _rotationPivotID       = Shader.PropertyToID("_RotationPivotUV");
         _applyColourGradientID = Shader.PropertyToID("_ApplyColourGradient");
-        _autoZoomID = Shader.PropertyToID("_AutoZoom");
-        _autoRotateID = Shader.PropertyToID("_AutoRotate");
+        _autoZoomID            = Shader.PropertyToID("_AutoZoom");
+        _autoRotateID          = Shader.PropertyToID("_AutoRotate");
+        _calculateJuliaSetID   = Shader.PropertyToID("_CalculateJuliaSet"); 
+        _juliaCID              =  Shader.PropertyToID("_JuliaC");
         
         // Grab some initial values
-        _textureResolution = _shaderGraphMaterial.GetVector(_textureResolutionID);
-        _regionSize = _shaderGraphMaterial.GetVector(_regionSizeID);
-        _regionCentre = _shaderGraphMaterial.GetVector(_regionCentreID);
-        _rotationDegs = _shaderGraphMaterial.GetFloat(_rotationDegsID);
-        _rotationPivotUV = _shaderGraphMaterial.GetVector(_rotationPivotID);
+        _textureResolution   = _shaderGraphMaterial.GetVector(_textureResolutionID);
+        _regionSize          = _shaderGraphMaterial.GetVector(_regionSizeID);
+        _regionCentre        = _shaderGraphMaterial.GetVector(_regionCentreID);
+        _rotationDegs        = _shaderGraphMaterial.GetFloat(_rotationDegsID);
+        _rotationPivotUV     = _shaderGraphMaterial.GetVector(_rotationPivotID);
         _applyColourGradient = _shaderGraphMaterial.GetFloat(_applyColourGradientID);
-        _autoZoom = _shaderGraphMaterial.GetFloat(_autoZoomID);
-        _autoRotate = _shaderGraphMaterial.GetFloat(_autoRotateID);
+        _autoZoom            = _shaderGraphMaterial.GetFloat(_autoZoomID);
+        _autoRotate          = _shaderGraphMaterial.GetFloat(_autoRotateID);
+        _calculateJuliaSet   = _shaderGraphMaterial.GetFloat(_calculateJuliaSetID);
+        _juliaC              = _shaderGraphMaterial.GetVector(_juliaCID);
     }
 
+    // ---------- UI Value Changed Handlers ----------
+    
     public void OnResolutionValueChanged(float value)
     {
         _textureResolution.x = _textureResolution.y = value;
@@ -217,6 +234,56 @@ public class MandelbrotAndJuliaFractalShaderGraphController : MonoBehaviour
     {
         _autoRotate = value ? 1f : 0f;
         _shaderGraphMaterial.SetFloat(_autoRotateID, _autoRotate);
+    }
+
+    public void OnCalculateJuliaSetToggleValueChanged(bool value)
+    {
+        _calculateJuliaSet = value ? 1f : 0f;
+        _shaderGraphMaterial.SetFloat(_calculateJuliaSetID, _calculateJuliaSet);
+        
+        // Reset the centre to an interesting point when we switch Mandelbrot / Julia
+        if (value)
+        {
+            _shaderGraphMaterial.SetVector(_regionCentreID, DefaultJuliaCentre);
+            _horizRegionCentreInputField.text = DefaultJuliaCentre.x.ToString();
+            _vertRegionCentreInputField.text = DefaultJuliaCentre.y.ToString();
+        }
+        else // Mandelbrot
+        {
+            _shaderGraphMaterial.SetVector(_regionCentreID, DefaultMandelbrotCentre);
+            _horizRegionCentreInputField.text = DefaultMandelbrotCentre.x.ToString();
+            _vertRegionCentreInputField.text = DefaultMandelbrotCentre.y.ToString();
+        }
+    }
+
+    public void OnJuliaCXValueChanged()
+    {
+        try
+        {
+            string s = _juliaCXInputField.text;
+            float f = float.Parse(s);
+            _juliaC.x = f;
+            _shaderGraphMaterial.SetVector(_juliaCID, _juliaC);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Julia CX value must be a float.");
+        } 
+    }
+    
+    public void OnJuliaCYValueChanged()
+    {
+        try
+        {
+            string s = _juliaCYInputField.text;
+            float f = float.Parse(s);
+            _juliaC.y = f;
+            _shaderGraphMaterial.SetVector(_juliaCID, _juliaC);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("Julia CY value must be a float.");
+        } 
     }
 
 }

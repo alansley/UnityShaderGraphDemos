@@ -32,6 +32,12 @@
         },
         {
             "m_Id": "c76810a775e14c56b4e352cc8ff45355"
+        },
+        {
+            "m_Id": "2c8d585e12244f57b79a47e8d3cd0000"
+        },
+        {
+            "m_Id": "d9f501b0af3a43ed85e2aa991b0aad6a"
         }
     ],
     "m_Keywords": [],
@@ -140,6 +146,12 @@
         },
         {
             "m_Id": "0c7b24185ed04affa9a1f93e5aec8941"
+        },
+        {
+            "m_Id": "28c9867c07b6416482ffcc5c6035e861"
+        },
+        {
+            "m_Id": "b966838adb944bb8a10ad2d7b3b75eea"
         }
     ],
     "m_GroupDatas": [
@@ -257,6 +269,20 @@
                     "m_Id": "00231453f02247359bc1d800ad615634"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "28c9867c07b6416482ffcc5c6035e861"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "4b324c38ccac47eeb0adc1bcfe936d38"
+                },
+                "m_SlotId": 2
             }
         },
         {
@@ -481,6 +507,20 @@
                     "m_Id": "2c2fba137aad45879e4b7ef8f08a4813"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "b966838adb944bb8a10ad2d7b3b75eea"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "4b324c38ccac47eeb0adc1bcfe936d38"
+                },
+                "m_SlotId": 9
             }
         },
         {
@@ -1372,6 +1412,42 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "28c9867c07b6416482ffcc5c6035e861",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1417.0,
+            "y": -160.99998474121095,
+            "width": 167.0,
+            "height": 34.00001525878906
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "3d4aa72862204be5923b3fc6fde0259b"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "2c8d585e12244f57b79a47e8d3cd0000"
+    }
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "2964aa2b3146405fa997a126647a18e4",
@@ -1500,6 +1576,29 @@
         "m_SerializableColors": []
     },
     "m_ExponentialBase": 1
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
+    "m_ObjectId": "2c8d585e12244f57b79a47e8d3cd0000",
+    "m_Guid": {
+        "m_GuidSerialized": "edfd6c55-91f7-4975-be52-52a8709573cb"
+    },
+    "m_Name": "CalculateJuliaSet",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "CalculateJuliaSet",
+    "m_DefaultReferenceName": "_CalculateJuliaSet",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": true
 }
 
 {
@@ -1701,6 +1800,12 @@
         },
         {
             "m_Id": "c76810a775e14c56b4e352cc8ff45355"
+        },
+        {
+            "m_Id": "2c8d585e12244f57b79a47e8d3cd0000"
+        },
+        {
+            "m_Id": "d9f501b0af3a43ed85e2aa991b0aad6a"
         }
     ]
 }
@@ -1754,6 +1859,20 @@
     "m_Property": {
         "m_Id": "bcfc64ceaa884afa87fc78391c41bee8"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "3d4aa72862204be5923b3fc6fde0259b",
+    "m_Id": 0,
+    "m_DisplayName": "CalculateJuliaSet",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -1925,9 +2044,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1137.0,
+            "x": -1136.999755859375,
             "y": -370.0,
-            "width": 383.0,
+            "width": 382.99981689453127,
             "height": 446.0
         }
     },
@@ -1955,6 +2074,9 @@
         },
         {
             "m_Id": "48c046f7848943419f9c7bf7c33ad28a"
+        },
+        {
+            "m_Id": "c3f9cf56ef5e46ab8901c66696dc89d8"
         },
         {
             "m_Id": "221ad12bfb7a49e8ab80c6e73a511fcc"
@@ -2348,7 +2470,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 87.72000122070313,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -3383,6 +3505,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "b966838adb944bb8a10ad2d7b3b75eea",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1359.0,
+            "y": -109.0,
+            "width": 109.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "f6e8273d40eb4b94a4509e4703b55980"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "d9f501b0af3a43ed85e2aa991b0aad6a"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "bacc0d4675aa471eb8df5c3f802fc5c3",
     "m_Id": 4,
@@ -3586,6 +3744,27 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "c3f9cf56ef5e46ab8901c66696dc89d8",
+    "m_Id": 9,
+    "m_DisplayName": "JuliaC",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "JuliaC",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "c4fc40ebde6241788a7c6c3a97a6e086",
     "m_Id": 0,
@@ -3687,7 +3866,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AngleDegs",
     "m_StageCapability": 3,
-    "m_Value": 41.70000076293945,
+    "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -3923,6 +4102,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "d9f501b0af3a43ed85e2aa991b0aad6a",
+    "m_Guid": {
+        "m_GuidSerialized": "dd491154-3e4e-4120-b45f-e539f5a1874d"
+    },
+    "m_Name": "JuliaC",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "JuliaC",
+    "m_DefaultReferenceName": "_JuliaC",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": -0.7099999785423279,
+        "y": 0.27015000581741335,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BranchNode",
     "m_ObjectId": "da1bf9078d6244a8aae827952264033d",
@@ -4102,6 +4309,27 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "f6e8273d40eb4b94a4509e4703b55980",
+    "m_Id": 0,
+    "m_DisplayName": "JuliaC",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
 }
 
 {

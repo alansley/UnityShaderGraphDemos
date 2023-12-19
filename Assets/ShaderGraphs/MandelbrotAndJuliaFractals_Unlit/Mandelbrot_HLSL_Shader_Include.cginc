@@ -12,7 +12,7 @@ float2 rotatePoint(float2 p, float2 pivot, float angleDegs)
 }
 */
 
-void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float2 RegionSize, in float2 RegionCentre, in float MaxIterations, in float ZoomFactor, in float AngleDegs, in bool CalcJuliaInsteadOfMandelbrot, out float3 FractalGreyscaleColour)
+void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float2 RegionSize, in float2 RegionCentre, in float MaxIterations, in float ZoomFactor, in float AngleDegs, in bool CalcJuliaInsteadOfMandelbrot, in float2 JuliaC, out float3 FractalGreyscaleColour)
 {
 	// Reminder: UVCoords go (0,0) at bottom-left to (1,1) at top-right!
 
@@ -33,11 +33,31 @@ void CalcFractal_float(in float2 UVCoords, in float2 TextureResolution, in float
 	// Mandelbrot rendering loop
 	float iterations = 0;
 	float2 z = float2(0, 0);
-	while (length(z) < 2.0 && iterations < MaxIterations)
+
+	if (!CalcJuliaInsteadOfMandelbrot)
 	{
-		z = float2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + Centre;
-		++iterations;
+		while (z.x * z.x + z.y * z.y < 4 && iterations < MaxIterations)
+		{
+			z = float2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + Centre;
+			++iterations;
+		}
 	}
+	else
+	{
+		// Note: It doesn't matter if we loop up or down on the iterations - but it just so happens that the Julia set
+		// looks better when we loop downwards with this particular gradient applied so we'll go with that.
+		iterations = MaxIterations;
+		
+		// Set our initial z-value. Note: This is zero for the Mandelbrot set, but non-zero and controlled by the
+		// `JuliaC` (complex) values here.
+		z = RegionCentre + JuliaC + Centre;		
+		
+		while (z.x * z.x + z.y * z.y < 4 && iterations > 0)
+		{
+			z = float2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + JuliaC;
+			--iterations;
+		}
+	}	
 	
 	// Calculate our grey value as the number of iterations it took to exit the above loop..
 	float greyscaleValue = iterations / MaxIterations;
